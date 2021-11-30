@@ -10,8 +10,9 @@ terraform {
 }
 
 module "vpc" {
-  source = "../src"
+  source = "../../src"
 
-  name = var.vpc-name
-  cidr = var.cidr
+  name   = var.vpc-name
+  cidr   = var.cidr
+  domain = var.domain
 }

@@ -3,3 +3,5 @@ terraform.tfstate.d/
 plan.out
 terraform.tfstate
 terraform.tfstate.backup
+go.mod
+go.sum
