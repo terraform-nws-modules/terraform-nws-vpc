@@ -12,20 +12,19 @@ import (
 func TestNwsVpcExample(t *testing.T) {
 	t.Parallel()
 
-	cfg := make(map[string]string)
-
-	cfg["name"] = fmt.Sprintf("terratest-vpc-%s", random.UniqueId())
-	cfg["cidr"] = "10.0.1.0/24"
-	cfg["domain"] = "corp.local"
-	cfg["ip"] = "<your ip>"
+	const (
+		cidr       = "10.0.1.0/24"
+		exp_domain = "corp.local"
+		exp_ip     = "<your_ip"
+	)
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/basic",
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"vpc-name": cfg["name"],
-			"cidr":     cfg["cidr"],
-			"domain":   cfg["domain"],
+			"vpc-name": fmt.Sprintf("terratest-vpc-%s", random.UniqueId()),
+			"cidr":     cidr,
+			"domain":   exp_domain,
 		},
 	})
 
@@ -36,7 +35,7 @@ func TestNwsVpcExample(t *testing.T) {
 	id := terraform.Output(t, terraformOptions, "vpc_id")
 	publicIp := terraform.Output(t, terraformOptions, "vpc_nat_ip")
 
-	assert.Equal(t, cfg["ip"], publicIp)
+	assert.Equal(t, exp_ip, publicIp)
 	assert.NotEmpty(t, id)
 
 }
