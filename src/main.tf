@@ -4,7 +4,7 @@ terraform {
   required_providers {
     nws = {
       source  = "nws/nws"
-      version = "0.1.2"
+      version = "0.1.3"
     }
   }
 }
