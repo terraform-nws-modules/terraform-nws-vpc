@@ -7,8 +7,13 @@ variable "name" {
   type        = string
 }
 
-variable "cidr" {
+variable "cidr4" {
   description = "Your VPC top CIDR"
+  type        = string
+}
+
+variable "domain" {
+  description = "Your VPC network domain name"
   type        = string
 }
 
@@ -19,17 +24,11 @@ variable "cidr" {
 variable "zone" {
   description = "Your zone name"
   type        = string
-  default     = "ru-msk-0"
+  default     = "central-0"
 }
 
-variable "vpc_offering" {
-  description = "Your VPC service offering. See NWS Doc"
-  type        = string
-  default     = "Default VPC Offering"
-}
-
-variable "domain" {
+variable "network_domain" {
   description = "Your VPC network domain name"
   type        = string
-  default     = "mydomain.local"
+  default     = "my.local"
 }

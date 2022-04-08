@@ -1,3 +1,5 @@
-vpc-name = "vpc-mycompany-name"
-cidr     = "10.0.1.0/24"
-domain   = "my.local"
+zone           = "central-0"
+name           = "my-vpc0"
+cidr4          = "10.0.1.0/24"
+domain         = "personal"
+network_domain = "my.local"
